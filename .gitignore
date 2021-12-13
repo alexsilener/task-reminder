@@ -1,2 +1,3 @@
 *.json
 __pycache__
+*.code-workspace
