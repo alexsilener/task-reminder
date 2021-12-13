@@ -85,7 +85,7 @@ def t_remove(id):
 
 @click.command()
 @click.option('--id', prompt='task id to set reminder for >')
-@click.option('--date_time', prompt="reminder date and time iso format YYYY-MM-DDTHH:MM:SS >")
+@click.option('--date_time', prompt="reminder date and time iso format YYYY-MM-DDTHH:MM >")
 @click.option('--repeat', prompt="s - single, d - daily, w - weekly >")
 def remind(id, date_time, repeat):
     data = read_data()
