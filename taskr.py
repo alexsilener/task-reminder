@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 from json.decoder import JSONDecodeError
 import tabulate
@@ -5,13 +7,14 @@ import click
 import os
 from loguru import logger
 import datetime
+import pathlib
 
 # calling main() after while within main() doesnt work
 # remove the need for main after every function
 # some very convoluted lines need to be simplified
 # rewrite json file pattern to be dict of dicts with id as first index
 
-json_path = os.path.join(os.getcwd(),"data.json")
+json_path = os.path.join(pathlib.Path(__file__).parent.resolve(),"data.json")
 
 def get_new_id():
     last_id = 0
