@@ -1,6 +1,6 @@
 from crontab import CronTab
 import taskr
-from datetime import datetime, timedelta
+from datetime import datetime
 from loguru import logger
 
 def set_cron_notify(cron, id, time: datetime, repeat, title, message):
@@ -31,7 +31,7 @@ def remove_cron_job(cron, id):
     for job in cron.find_comment(f'taskr_id_{id}'):
         cron.remove(job)
 
-def main():
+def set_cron():
     data = taskr.read_data()
     with CronTab(user=True) as cron:
         cron_ids = read_cron_ids(cron)
@@ -49,4 +49,4 @@ def main():
                 remove_cron_job(cron, id)
             logger.info("old task reminders removed.")
 if __name__ == "__main__":
-    main()
+    set_cron()

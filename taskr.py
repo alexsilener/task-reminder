@@ -9,6 +9,7 @@ from loguru import logger
 import datetime
 import pathlib
 
+import set_cron
 # calling main() after while within main() doesnt work
 # remove the need for main after every function
 # some very convoluted lines need to be simplified
@@ -105,6 +106,7 @@ def remind(id, date_time, repeat):
                 data[idx]["reminder"] = date_time
                 data[idx]["repeat"] = repeat
     write_data(data)
+    set_cron.set_cron()
     main()
 
 @click.command()
@@ -122,6 +124,8 @@ def main(command):
             t_remove()
         elif command == "remind":
             remind()
+        elif command == "cron":
+            set_cron.set_cron()
 
         main()
 
